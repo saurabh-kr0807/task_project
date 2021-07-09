@@ -1,0 +1,21 @@
+{% extends "task/base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+  {% for task in tasks %}
+  <div class="task">
+      <h1>Task Title:- <a href="{% url 'task_detail' pk=task.pk %}"> {{task.task_title}}</h1>
+  </div>
+   <p>crated_by :- {{task.task_author}}</p>
+    <p>assign_to:- {{task.assign_to}}</p>
+    <!-- {% if user.username != task.task_author %} -->
+      <div class="date">
+      <p class="taskcontent">created_date :- {{ task.created_date}}</p>
+      <p class="taskcontent">complete_date :- {{ task.complete_date}}</p>
+      </div>
+      <!-- {% else %}
+      {% endif %} -->
+  {% endfor %}
+{% else %}
+<<p>Please login the application</p>
+{% endif %}
+{% endblock %}

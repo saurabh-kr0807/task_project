@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="container">
+      <ul class="nav navbar-nav">
+      <li><a class="navbar-brand bigbrand" href="{% url 'home' %}">Home</a></li>
+      <!-- </ul>
+        <ul class="nav navbar-nav">
+        <li><a class="navbar-brand bigbrand" href="{% url 'task_list' %}">My Task</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'task_new' %}">New Task</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'login' %}">login</a></li>
+        </ul> -->
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li><a class="navbar-brand bigbrand" href="{% url 'task_list' %}">My Task</a></li>
+                <li><a href="{% url 'task_new' %}">New Task</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a>Welcome: {{user.username}}</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">login</a></li>
+                <li><a href="{% url 'signup' %}">registration</a></li>
+                {% endif %}
+    </ul>
+    <div class="content container">
+        <div class="row">
+                {% block content %}
+
+                {% endblock %}
+
+        </div>
+    </div>
+  </body>
+</html>

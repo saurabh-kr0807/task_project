@@ -1,0 +1,15 @@
+{% extends "task/base.html" %}
+{% block content %}
+<div class="date taskdate">
+  <p class="taskcontent">Task Title:- {{ object.task_title}}</p>
+  <p class="taskcontent">Assign to :- {{ object.assign_to}}</p>
+  <p class="taskcontent">created_date :- {{ object.created_date}}</p>
+  <p class="taskcontent">complete_date :- {{ object.complete_date}}</p>
+</div>
+<a  href="{% url 'task_edit' pk=taskdetail.pk%}">
+    Edit
+</a>
+<a href="{% url 'task_remove' pk=taskdetail.pk%}">
+    Remove
+</a>
+{% endblock %}
